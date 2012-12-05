@@ -1,0 +1,31 @@
+#include "FLAME.h"
+
+#define LL(i,j) buff_L[ (j)*ldim_L + (i) ]
+#define BB(i,j) buff_B[ (j)*ldim_B + (i) ]
+
+void REF_Trsm( FLA_Obj L, FLA_Obj B )
+{
+  int m, n, i, j, k, ldim_L, ldim_B;
+
+  double *buff_L, *buff_B;
+
+  m = FLA_Obj_length( L );
+  n = FLA_Obj_length( B );
+
+  ldim_L = FLA_Obj_ldim( L );
+  ldim_B = FLA_Obj_ldim( B );
+
+  buff_L = (double *) FLA_Obj_buffer( L );
+  buff_B = (double *) FLA_Obj_buffer( B );
+
+  for ( j=0; j<n; j++ ){
+    /* jth column of B = inv( tril( L ) ) * jth column of B */
+    for ( i=0; i<m; i++ ){
+      /* Compute BB( i,j ) */
+      for ( k=0; k<i; k++ )
+	BB( i,j ) = BB( i,j ) - LL( i, k ) * BB( k,j );
+      BB( i,j ) = BB( i,j ) / LL( i,i );
+    }
+  }
+}
+

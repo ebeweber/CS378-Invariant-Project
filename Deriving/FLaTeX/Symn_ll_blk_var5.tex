@@ -2,7 +2,7 @@
 
 % Define the operation to be computed
 
-\renewcommand{\operation}{  C \becomes A B + C $ where A is symmetric and stored in lower triangle $ }
+\renewcommand{\operation}{ C \becomes A B + C $ where A is symmetric and stored in the lower triangle $ }
 
 \renewcommand{\routinename}{\operation}
 
@@ -22,8 +22,8 @@
 % Note: Right-hand side of equalities must be updated appropriately
 
 \renewcommand{\invariant}{
-  \FlaTwoByOne{A_{TL} B_T + A_{BL} B_B + C_T = \widehat C_T}
-              {C_B = \widehat C_B} 
+  \FlaTwoByOne{C_T = \widehat C_T}
+              {A_{BR} B_B + C_B = \widehat C_B}  
 }
 
 % Step 3: Loop-guard 
@@ -37,7 +37,7 @@
 \renewcommand{\partitionings}{
   $
   A \rightarrow
-  \FlaTwoByTwo{A_{TL}}{*}
+  \FlaTwoByTwo{A_{TL}}{A_{TR}}
               {A_{BL}}{A_{BR}}
   $
 ,
@@ -62,19 +62,21 @@ $ C_T $ has $ 0 $ rows
 
 % Step 5a: Repartition the operands 
 
+\renewcommand{\blocksize}{b}
+
 \renewcommand{\repartitionings}{
-$  \FlaTwoByTwo{A_{TL}}{*}
+$  \FlaTwoByTwo{A_{TL}}{A_{TR}}
               {A_{BL}}{A_{BR}}
   \rightarrow
-  \FlaThreeByThreeBR{A_{00}}{*}{*}
-                    {a_{10}^T}{\alpha_{11}}{*}
-                    {A_{20}}{a_{21}}{A_{22}}
+  \FlaThreeByThreeBR{A_{00}}{A_{01}}{A_{02}}
+                    {A_{10}}{A_{11}}{A_{12}}
+                    {A_{20}}{A_{21}}{A_{22}}
 $,
 $  \FlaTwoByOne{ B_T }
                { B_B }
 \rightarrow
   \FlaThreeByOneB{B_0}
-                 {b_1^T}
+                 {B_1}
                  {B_2}
 $
 ,
@@ -82,32 +84,31 @@ $  \FlaTwoByOne{ C_T }
                { C_B }
 \rightarrow
   \FlaThreeByOneB{C_0}
-                 {c_1^T}
+                 {C_1}
                  {C_2}
 $
 }
 
 \renewcommand{\repartitionsizes}{
-  $ \alpha_{11} $ is $ 1 \times 1 $,
-  $ b_1 $ has $ 1 $ row,
-  $ c_1 $ has $ 1 $ row
-}
+  $ A_{11} $ is $ b \times b $,
+$ B_1 $ has $ b $ rows,
+$ C_1 $ has $ b $ rows}
 
 % Step 5b: Move the double lines 
 
 \renewcommand{\moveboundaries}{
-$  \FlaTwoByTwo{A_{TL}}{*}
+$  \FlaTwoByTwo{A_{TL}}{A_{TR}}
               {A_{BL}}{A_{BR}}
   \leftarrow
-  \FlaThreeByThreeTL{A_{00}}{*}{*}
-                    {a_{10}^T}{\alpha_{11}}{*}
-                    {A_{20}}{a_{21}}{A_{22}}
+  \FlaThreeByThreeTL{A_{00}}{A_{01}}{A_{02}}
+                    {A_{10}}{A_{11}}{A_{12}}
+                    {A_{20}}{A_{21}}{A_{22}}
 $,
 $  \FlaTwoByOne{ B_T }
                { B_B }
 \leftarrow
   \FlaThreeByOneT{B_0}
-                 {b_1^T}
+                 {B_1}
                  {B_2}
 $
 ,
@@ -115,7 +116,7 @@ $  \FlaTwoByOne{ C_T }
                { C_B }
 \leftarrow
   \FlaThreeByOneT{C_0}
-                 {c_1^T}
+                 {C_1}
                  {C_2}
 $
 }
@@ -124,18 +125,18 @@ $
 % Note: The below needs editing!!!
 
 \renewcommand{\beforeupdate}{
-  \FlaThreeByOneB{A_{00} B_0 + a_{10} b_1^T + A_{20}^T B_2 + C_0 = \widehat C_0}
-                 {a_{10}^T B_0 + c_1^T = \widehat c_1^T}
-                 {A_{20} B_0 + C_2 = \widehat C_2}
+  \FlaThreeByOneB{C_0 = \widehat C_0}
+                 {C_1 = \widehat C_1}
+                 {A_{22} B_2 + C_2 = \widehat C_2}
 }
 
 % Step 7: State after moving of double lines
 % Note: The below needs editing!!!
 
 \renewcommand{\afterupdate}{
-  \FlaThreeByOneT{A_{00} B_0 + a_{10} b_1^T + A_{20}^2 B_2 +  C_0 = \widehat C_0}
-                 {a_{10}^T B_0 + \alpha_{11} b_1^T + a_{21}^T B_2 +  c_1^T = \widehat c_1^T}
-                 {A_{20} B_0 + b_{21} b_1^T + C_2 = \widehat C_2}
+  \FlaThreeByOneT{C_0 = \widehat C_0}
+                 {A_{11} + B_1 + A_{21} B_2 + C_1 = \widehat C_1}
+                 {A_{21} B_1 + A_{22} B_2 + C_2 = \widehat C_2}
 }
 
 % Step 8: Insert the updates required to change the 
@@ -145,8 +146,11 @@ $
 \renewcommand{\update}{
 $
   \begin{array}{l}
-    \mbox{ $ c_1^T = \widehat c_1^T + \alpha_{11} b_1^T + a_{21}^T B_2 $ } \\ 
-    \mbox{ $ C_2 = \widehat C_2 + a_{21} b_1^T $ } \\ 
+    \mbox{ $ C_2 = \widehat C_2 + A{21} B_1 $ } \\ 
+    \mbox{ $ C_1 = \widehat C_1 + A_{11} B_1 + A_{21} B_2 $ } \\ 
   \end{array}
 $
 }
+
+
+

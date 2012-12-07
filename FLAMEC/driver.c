@@ -6,12 +6,12 @@
 
 #define TEST_UNB_VAR1 TRUE
 #define TEST_BLK_VAR1 FALSE
-#define TEST_UNB_VAR2 TRUE
+#define TEST_UNB_VAR2 FALSE
 #define TEST_BLK_VAR2 FALSE
-#define TEST_UNB_VAR3 TRUE
+#define TEST_UNB_VAR3 FALSE
 #define TEST_BLK_VAR3 FALSE
-#define TEST_UNB_VAR4 TRUE
-##define TEST_UNB_VAR5 TRUE
+#define TEST_UNB_VAR4 FALSE
+#define TEST_UNB_VAR5 FALSE
 #define TEST_BLK_VAR5 FALSE
 #define TEST_UNB_VAR6 FALSE
 #define TEST_BLK_VAR6 FALSE
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_unb_var1( L, B );
+      Symn_ll_unb_var1( L, B );
 
       dtime = FLA_Clock() - dtime;
 

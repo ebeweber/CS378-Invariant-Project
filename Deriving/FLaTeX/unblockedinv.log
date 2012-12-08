@@ -1,0 +1,214 @@
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=pdflatex 2012.10.5)  8 DEC 2012 14:43
+entering extended mode
+ %&-line parsing enabled.
+**unblockedinv.tex
+(./unblockedinv.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, german-x-2008-06-18, ngerman-x-2008-06-18, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, la
+tin, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, polish, portuguese, r
+omanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, turki
+sh, ukenglish, ukrainian, uppersorbian, welsh, loaded.
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/v/filer4b/software/texlive/2008/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2008/09/08 v0.04l Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+) (/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/program/program.sty
+\@gtempa=\dimen105
+\@gtempa=\dimen106
+\@gtempa=\dimen107
+\@gtempa=\dimen108
+\@gtempa=\dimen109
+\@gtempa=\dimen110
+\@gtempa=\dimen111
+\@gtempa=\dimen112
+\@gtempa=\dimen113
+\@gtempa=\dimen114
+\@gtempa=\dimen115
+\@gtempa=\dimen116
+\@gtempa=\dimen117
+\@gtempa=\dimen118
+\@gtempa=\dimen119
+\@gtempa=\dimen120
+\@gtempa=\dimen121
+\@gtempa=\dimen122
+\@gtempa=\dimen123
+\@gtempa=\dimen124
+\@gtempa=\dimen125
+\@gtempa=\dimen126
+\@gtempa=\dimen127
+\@gtempa=\dimen128
+\@gtempa=\dimen129
+\@gtempa=\dimen130
+\@gtempa=\dimen131
+\@gtempa=\dimen132
+\@gtempa=\dimen133
+\@gtempa=\dimen134
+\@gtempa=\dimen135
+\@gtempa=\dimen136
+\@gtempa=\dimen137
+\@gtempa=\dimen138
+\@gtempa=\dimen139
+\@gtempa=\dimen140
+\@gtempa=\dimen141
+\@gtempa=\dimen142
+\@gtempa=\dimen143
+\@gtempa=\dimen144
+\@gtempa=\dimen145
+\@gtempa=\dimen146
+\@gtempa=\dimen147
+\@gtempa=\dimen148
+\@gtempa=\dimen149
+\@gtempa=\dimen150
+\@gtempa=\dimen151
+\@gtempa=\dimen152
+\@gtempa=\dimen153
+\@gtempa=\dimen154
+\c@programline=\count88
+\old@nxttabmar=\count89
+\symeulerletters=\mathgroup4
+\powersetbox=\box26
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 839.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 839.
+LaTeX Font Info:    Try loading font information for U+eur on input line 839.
+
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/amsfonts/ueur.fd
+File: ueur.fd 2002/01/19 v2.2g AMS font definitions
+))
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+\epsfxsize=\dimen155
+\epsfysize=\dimen156
+)
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/tools/array.sty
+Package: array 2005/08/23 v2.4b Tabular extension package (FMi)
+\col@sep=\dimen157
+\extrarowheight=\dimen158
+\NC@list=\toks15
+\extratabsurround=\skip43
+\backup@length=\skip44
+)
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/v/filer4b/software/texlive/2008/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2001/02/13 v0.1j Color table columns (DPC)
+\everycr=\toks16
+\minrowclearance=\skip45
+)
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/latex/ltxmisc/cancel.sty
+Package: cancel 2000/03/12 v2.1 Cancel math terms
+)
+(./flatex.tex
+\savedwidth=\skip46
+)
+No file unblockedinv.aux.
+\openout1 = `unblockedinv.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+(/v/filer4b/software/texlive/2008/texmf-dist/tex/context/base/supp-pdf.tex
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count90
+\scratchdimen=\dimen159
+\scratchbox=\box27
+\nofMPsegments=\count91
+\nofMParguments=\count92
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count93
+\MPscratchDim=\dimen160
+\MPnumerator=\count94
+\everyMPtoPDFconversion=\toks18
+) (./Symn_ll_var1.tex)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 34.
+ [1
+
+{/v/filer4b/software/texlive/2008/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+] [2] (./Symn_ll_var2.tex) [3] [4] (./Symn_ll_var3.tex) [5] [6] (./Symn_ll_var4
+.tex) [7] [8] (./Symn_ll_var5.tex) [9] [10]
+(./Symn_ll_var6.tex) [11] [12] (./Symn_ll_var7.tex) [13] [14]
+(./Symn_ll_var8.tex) [15] [16] (./unblockedinv.aux) ) 
+Here is how much of TeX's memory you used:
+ 1631 strings out of 493876
+ 19890 string characters out of 1147346
+ 90919 words of memory out of 3000000
+ 4903 multiletter control sequences out of 10000+50000
+ 6601 words of font info for 24 fonts, out of 3000000 for 5000
+ 714 hyphenation exceptions out of 8191
+ 34i,18n,24p,209b,393s stack positions out of 5000i,500n,10000p,200000b,50000s
+</v/filer4b/software/texli
+ve/2008/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb></v/filer4b/software/texli
+ve/2008/texmf-dist/fonts/type1/bluesky/cm/cmbx8.pfb></v/filer4b/software/texliv
+e/2008/texmf-dist/fonts/type1/bluesky/cm/cmex10.pfb></v/filer4b/software/texliv
+e/2008/texmf-dist/fonts/type1/bluesky/cm/cmmi10.pfb></v/filer4b/software/texliv
+e/2008/texmf-dist/fonts/type1/bluesky/cm/cmmi7.pfb></v/filer4b/software/texlive
+/2008/texmf-dist/fonts/type1/bluesky/cm/cmr10.pfb></v/filer4b/software/texlive/
+2008/texmf-dist/fonts/type1/bluesky/cm/cmr7.pfb></v/filer4b/software/texlive/20
+08/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb>
+Output written on unblockedinv.pdf (16 pages, 91634 bytes).
+PDF statistics:
+ 86 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

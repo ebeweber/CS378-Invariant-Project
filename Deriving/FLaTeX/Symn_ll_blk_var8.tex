@@ -22,7 +22,7 @@
 % Note: Right-hand side of equalities must be updated appropriately
 
 \renewcommand{\invariant}{
-  \FlaTwoByOne{C_T = \widehat C_T}
+  \FlaTwoByOne{A_{BL}^T B_B + C_T = \widehat C_T}
               {A_{BL} B_T + A_{BR} B_B + C_B = \widehat C_B}  
 }
 
@@ -146,7 +146,8 @@ $
 \renewcommand{\update}{
 $
   \begin{array}{l}
-    \mbox{ $ C_1 = \widehat C_1 + A_{10} B_0 + A_{11} B_1 + A_{21}^T B_2 $ } \\ 
+    \mbox{ $ C_0 = \widehat C_0 + A_{10}^T B_1 $ } \\ 
+    \mbox{ $ C_1 = \widehat C_1 + A_{10} B_0 + A_{11} B_1 $ } \\ 
   \end{array}
 $
 }

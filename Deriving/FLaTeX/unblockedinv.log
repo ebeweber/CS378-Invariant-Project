@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=pdflatex 2012.10.5)  8 DEC 2012 14:43
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=pdflatex 2012.10.5)  10 DEC 2012 12:15
 entering extended mode
  %&-line parsing enabled.
 **unblockedinv.tex
@@ -151,8 +151,7 @@ Package: cancel 2000/03/12 v2.1 Cancel math terms
 )
 (./flatex.tex
 \savedwidth=\skip46
-)
-No file unblockedinv.aux.
+) (./unblockedinv.aux)
 \openout1 = `unblockedinv.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
@@ -167,6 +166,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
+
 (/v/filer4b/software/texlive/2008/texmf-dist/tex/context/base/supp-pdf.tex
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count90
@@ -190,8 +190,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (./Symn_ll_var6.tex) [11] [12] (./Symn_ll_var7.tex) [13] [14]
 (./Symn_ll_var8.tex) [15] [16] (./unblockedinv.aux) ) 
 Here is how much of TeX's memory you used:
- 1631 strings out of 493876
- 19890 string characters out of 1147346
+ 1633 strings out of 493876
+ 19924 string characters out of 1147346
  90919 words of memory out of 3000000
  4903 multiletter control sequences out of 10000+50000
  6601 words of font info for 24 fonts, out of 3000000 for 5000
@@ -206,7 +206,7 @@ e/2008/texmf-dist/fonts/type1/bluesky/cm/cmmi7.pfb></v/filer4b/software/texlive
 /2008/texmf-dist/fonts/type1/bluesky/cm/cmr10.pfb></v/filer4b/software/texlive/
 2008/texmf-dist/fonts/type1/bluesky/cm/cmr7.pfb></v/filer4b/software/texlive/20
 08/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb>
-Output written on unblockedinv.pdf (16 pages, 91634 bytes).
+Output written on unblockedinv.pdf (16 pages, 91686 bytes).
 PDF statistics:
  86 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)

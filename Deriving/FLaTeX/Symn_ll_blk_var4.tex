@@ -24,7 +24,7 @@
 
 \renewcommand{\invariant}{
   \FlaTwoByOne{A_{TL} B_T + A_{BL}^T B_B + C_T = \widehat C_T}
-              {C_B = \widehat C_B}  
+              {A_{BL} B_T + C_B = \widehat C_B}  
 }
 
 % Step 3: Loop-guard 
@@ -147,8 +147,8 @@ $
 \renewcommand{\update}{
 $
   \begin{array}{l}
-    \mbox{ $ C_1 = \widehat C_1 + A{10} B_0 + A_{11} B_1 $ } \\ 
-    \mbox{ $ C_0 = \widehat C_0 + A_{20} B_2 $ } \\ 
+    \mbox{ $ C_1 = \widehat C_1 + A{11} B_1 + A_{21} B_2 $ } \\ 
+    \mbox{ $ C_2 = \widehat C_2 + A_{21} B_1 $ } \\ 
   \end{array}
 $
 }

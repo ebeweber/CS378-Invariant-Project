@@ -11,6 +11,7 @@
 #define TEST_UNB_VAR3 FALSE
 #define TEST_BLK_VAR3 FALSE
 #define TEST_UNB_VAR4 FALSE
+#define TEST_BLK_VAR4 FALSE
 #define TEST_UNB_VAR5 FALSE
 #define TEST_BLK_VAR5 FALSE
 #define TEST_UNB_VAR6 FALSE
@@ -20,7 +21,6 @@
 #define TEST_UNB_VAR8 FALSE
 #define TEST_BLK_VAR8 FALSE
 
-define TEST_BLK_VAR4 FALSE
 
 int main(int argc, char *argv[])
 {
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     d_n;
 
   FLA_Obj
-    L, B, Bref, Bold, delta;
+    A, B, C, Cref, Cold;
   
   /* Initialize FLAME */
   FLA_Init( );
@@ -72,30 +72,23 @@ int main(int argc, char *argv[])
     FLA_Obj_create( FLA_DOUBLE, n, n, 1, n, &C );
     FLA_Obj_create( FLA_DOUBLE, n, n, 1, n, &Cref );
     FLA_Obj_create( FLA_DOUBLE, n, n, 1, n, &Cold );
-    FLA_Obj_create( FLA_DOUBLE, 1, 1, 1, 1, &delta );
 
     /* Generate random matrices L and B */
     FLA_Random_herm_matrix(FLA_LOWER_TRIANGULAR, A );
     FLA_Random_matrix( B );
-
-    /* Add something large to the diagonal to make sure it isn't nearly singular */
-    d_n = ( double ) n;
-    *( ( double * ) FLA_Obj_buffer_at_view( delta ) ) = d_n;
-
-
     FLA_Random_matrix( Cold );
 
-    gflops = 1.0 * n * n * n * 1.0e-09;
+    gflops = 2.0 * n * n * n * 1.0e-09;
 
-    /* Time FLA_Trsm */
+    /* Time FLA_Symm */
 
     for ( irep=0; irep<nrepeats; irep++ ){
       FLA_Copy( Cold, Cref );
 
       dtime = FLA_Clock();
 
-      FLA_Trsm( FLA_LEFT, FLA_LOWER_TRIANGULAR, FLA_NO_TRANSPOSE, FLA_NONUNIT_DIAG,
-		FLA_ONE, L, Cref );
+      FLA_Symm( FLA_LEFT, FLA_LOWER_TRIANGULAR, 
+		FLA_ONE, A, B, FLA_ONE, Cref );
 
       dtime = FLA_Clock() - dtime;
 
@@ -122,7 +115,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_ll_unb_var1( L, B );
+      Symm_ll_unb_var1( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -147,7 +140,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_blk_var1( L, B, nb_alg );
+      Symn_blk_var1( L, B, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -173,7 +166,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_unb_var2( L, B );
+      Symn_unb_var2( L, B );
 
       dtime = FLA_Clock() - dtime;
 
@@ -198,7 +191,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_blk_var2( L, B, nb_alg );
+      Symn_blk_var2( L, B, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -224,7 +217,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_unb_var3( L, B );
+      Symn_unb_var3( L, B );
 
       dtime = FLA_Clock() - dtime;
 
@@ -249,7 +242,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_blk_var3( L, B, nb_alg );
+      Symn_blk_var3( L, B, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -275,7 +268,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_unb_var4( L, B );
+      Symn_unb_var4( L, B );
 
       dtime = FLA_Clock() - dtime;
 
@@ -300,7 +293,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Trsm_blk_var4( L, B, nb_alg );
+      Symn_blk_var4( L, B, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -317,10 +310,220 @@ int main(int argc, char *argv[])
     fflush( stdout );
 #endif
 
-    FLA_Obj_free( &L );
+
+#if TEST_UNB_VAR5==TRUE
+    /* Variant 5 unblocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_unb_var5( L, B );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }    
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+#if TEST_BLK_VAR5==TRUE
+    /* Variant 5 blocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_blk_var5( L, B, nb_alg );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+
+#if TEST_UNB_VAR6==TRUE
+    /* Variant 6 unblocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_unb_var6( L, B );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }    
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+#if TEST_BLK_VAR6==TRUE
+    /* Variant 6 blocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_blk_var6( L, B, nb_alg );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+
+#if TEST_UNB_VAR7==TRUE
+    /* Variant 7 unblocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_unb_var7( L, B );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }    
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+#if TEST_BLK_VAR7==TRUE
+    /* Variant 4 blocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_blk_var7( L, B, nb_alg );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+
+#if TEST_UNB_VAR8==TRUE
+    /* Variant 8 unblocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_unb_var8( L, B );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }    
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+#if TEST_BLK_VAR8==TRUE
+    /* Variant 4 blocked */
+
+    for ( irep=0; irep<nrepeats; irep++ ){
+      FLA_Copy( Cold, C );
+    
+      dtime = FLA_Clock();
+
+      Symn_blk_var8( L, B, nb_alg );
+
+      dtime = FLA_Clock() - dtime;
+
+      if ( irep == 0 ) 
+	dtime_best = dtime;
+      else
+	dtime_best = ( dtime < dtime_best ? dtime : dtime_best );
+    }
+
+    diff = FLA_Max_elemwise_diff( C, Cref );
+
+    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+            gflops / dtime_best, diff );
+    fflush( stdout );
+#endif
+
+
+    FLA_Obj_free( &A );
     FLA_Obj_free( &B );
-    FLA_Obj_free( &Bref );
-    FLA_Obj_free( &delta );
+    FLA_Obj_free( &C );
+    FLA_Obj_free( &Cref );
+    FLA_Obj_free( &Cold );
     printf( "\n" );
 
     i++;
@@ -354,6 +557,18 @@ int main(int argc, char *argv[])
 #if TEST_UNB_VAR4==TRUE
   printf( "plot( data_unb_var4( :,1 ), data_unb_var4( :, 2 ), 'm-.' ); \n" );
 #endif
+#if TEST_UNB_VAR5==TRUE
+  printf( "plot( data_unb_var5( :,1 ), data_unb_var5( :, 2 ), 'r-.' ); \n" );
+#endif
+#if TEST_UNB_VAR6==TRUE
+  printf( "plot( data_unb_var6( :,1 ), data_unb_var6( :, 2 ), 'g-.' ); \n" );
+#endif
+#if TEST_UNB_VAR7==TRUE
+  printf( "plot( data_unb_var7( :,1 ), data_unb_var7( :, 2 ), 'b-.' ); \n" );
+#endif
+#if TEST_UNB_VAR8==TRUE
+  printf( "plot( data_unb_var8( :,1 ), data_unb_var8( :, 2 ), 'm-.' ); \n" );
+#endif
 #if TEST_BLK_VAR1==TRUE
   printf( "plot( data_blk_var1( :,1 ), data_blk_var1( :, 2 ), 'r--' ); \n" );
 #endif
@@ -365,6 +580,18 @@ int main(int argc, char *argv[])
 #endif
 #if TEST_BLK_VAR4==TRUE
   printf( "plot( data_blk_var4( :,1 ), data_blk_var4( :, 2 ), 'm--' ); \n" );
+#endif
+#if TEST_BLK_VAR5==TRUE
+  printf( "plot( data_blk_var5( :,1 ), data_blk_var5( :, 2 ), 'r--' ); \n" );
+#endif
+#if TEST_BLK_VAR6==TRUE
+  printf( "plot( data_blk_var6( :,1 ), data_blk_var6( :, 2 ), 'g--' ); \n" );
+#endif
+#if TEST_BLK_VAR7==TRUE
+  printf( "plot( data_blk_var7( :,1 ), data_blk_var7( :, 2 ), 'b--' ); \n" );
+#endif
+#if TEST_BLK_VAR8==TRUE
+  printf( "plot( data_blk_var8( :,1 ), data_blk_var8( :, 2 ), 'm--' ); \n" );
 #endif
 
   printf( "hold on \n");
@@ -385,6 +612,18 @@ int main(int argc, char *argv[])
 #if TEST_UNB_VAR4==TRUE
   printf( "        'unb var4', ...\n");
 #endif
+#if TEST_UNB_VAR5==TRUE
+  printf( "        'unb var5', ...\n");
+#endif
+#if TEST_UNB_VAR6==TRUE
+  printf( "        'unb var6', ...\n");
+#endif
+#if TEST_UNB_VAR7==TRUE
+  printf( "        'unb var7', ...\n");
+#endif
+#if TEST_UNB_VAR8==TRUE
+  printf( "        'unb var8', ...\n");
+#endif
 #if TEST_BLK_VAR1==TRUE
   printf( "        'blk var1', ...\n");
 #endif
@@ -396,6 +635,18 @@ int main(int argc, char *argv[])
 #endif
 #if TEST_BLK_VAR4==TRUE
   printf( "        'blk var4', ...\n");
+#endif
+#if TEST_BLK_VAR5==TRUE
+  printf( "        'blk var5', ...\n");
+#endif
+#if TEST_BLK_VAR6==TRUE
+  printf( "        'blk var6', ...\n");
+#endif
+#if TEST_BLK_VAR7==TRUE
+  printf( "        'blk var7', ...\n");
+#endif
+#if TEST_BLK_VAR8==TRUE
+  printf( "        'blk var8', ...\n");
 #endif
   printf( "         2 );\n");
 

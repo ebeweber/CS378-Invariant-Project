@@ -56,12 +56,15 @@ int Symm_blk_var3( FLA_Obj A, FLA_Obj B, FLA_Obj C, int nb_alg )
                            CB,                &C2,        b, FLA_BOTTOM );
 
     /*------------------------------------------------------------*/
-    C0 = C0 + FLA_Tranpose(A10)*B1;
-	C1 = C1 + A11*B1;
-	C2 = C2 + A21*B1;
-    /*                       update line 1                        */
-    /*                             :                              */
-    /*                       update line n                        */
+
+    // C0 = A10^T B1
+    FLA_Gemm(FLA_TRANSPOSE, FLA_NO_TRANSPOSE, FLA_ONE, A10, B1, FLA_ONE, C0);
+
+    // C1 = C1 + A11*B1;
+    FLA_Gemm(FLA_NO_TRANSPOSE, FLA_NO_TRANSPOSE, FLA_ONE, A11, B1, FLA_ONE, C1);
+
+    // C2 = C2 + A21*B1;
+    FLA_Gemm(FLA_NO_TRANSPOSE, FLA_NO_TRANSPOSE, FLA_ONE, A21, B1, FLA_ONE, C2);
 
     /*------------------------------------------------------------*/
 

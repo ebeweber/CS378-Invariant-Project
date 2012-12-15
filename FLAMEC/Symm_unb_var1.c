@@ -9,7 +9,7 @@ Email of author
 
 #include "FLAME.h"
 
-int Symm_unb_var8( FLA_Obj A, FLA_Obj B, FLA_Obj C )
+int Symm_unb_var1( FLA_Obj A, FLA_Obj B, FLA_Obj C )
 {
   FLA_Obj ATL,   ATR,      A00,  a01,     A02, 
           ABL,   ABR,      a10t, alpha11, a12t,
@@ -51,14 +51,14 @@ int Symm_unb_var8( FLA_Obj A, FLA_Obj B, FLA_Obj C )
         CB,                &C2,        1, FLA_BOTTOM );
 
     /*------------------------------------------------------------*/
-    
-    // C0 = C0 + a10*b1t;
-    FLA_Ger(FLA_ONE, a10t, b1t, C0); 
 
-  	// c1t = c1t + a10t*B0 + alpha11*b1t;
+    // c1t = c1t + a10t*B0 + alpha11*b1t;
     FLA_Gemv(FLA_TRANSPOSE, FLA_ONE, B0, a10t, FLA_ONE, c1t);
     FLA_Axpy(alpha11, b1t, c1t);
-	
+    
+    //C0 = C0 + a10*b1t;
+    FLA_Ger(FLA_ONE, a10t, b1t, C0);
+
     /*------------------------------------------------------------*/
 
     FLA_Cont_with_3x3_to_2x2( &ATL, /**/ &ATR,       A00,  a01,     /**/ A02,

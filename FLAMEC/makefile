@@ -39,7 +39,14 @@ FFLAGS     := $(CFLAGS)
 LDFLAGS    := -lm
 
 TEST_OBJS  := driver.o \
-	Symn_unb_var1.o
+	Symm_unb_var1.o \
+	Symm_unb_var2.o \
+	Symm_unb_var3.o \
+	Symm_unb_var4.o \
+	Symm_unb_var5.o \
+	Symm_unb_var6.o \
+	Symm_unb_var7.o \
+	Symm_unb_var8.o
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@

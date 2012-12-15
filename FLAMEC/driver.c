@@ -6,20 +6,21 @@
 
 #define TEST_UNB_VAR1 TRUE
 #define TEST_BLK_VAR1 FALSE
-#define TEST_UNB_VAR2 FALSE
+#define TEST_UNB_VAR2 TRUE
 #define TEST_BLK_VAR2 FALSE
-#define TEST_UNB_VAR3 FALSE
+#define TEST_UNB_VAR3 TRUE
 #define TEST_BLK_VAR3 FALSE
-#define TEST_UNB_VAR4 FALSE
+#define TEST_UNB_VAR4 TRUE
 #define TEST_BLK_VAR4 FALSE
-#define TEST_UNB_VAR5 FALSE
+#define TEST_UNB_VAR5 TRUE
 #define TEST_BLK_VAR5 FALSE
-#define TEST_UNB_VAR6 FALSE
+#define TEST_UNB_VAR6 TRUE
 #define TEST_BLK_VAR6 FALSE
-#define TEST_UNB_VAR7 FALSE
+#define TEST_UNB_VAR7 TRUE
 #define TEST_BLK_VAR7 FALSE
-#define TEST_UNB_VAR8 FALSE
+#define TEST_UNB_VAR8 TRUE
 #define TEST_BLK_VAR8 FALSE
+
 
 
 int main(int argc, char *argv[])
@@ -115,7 +116,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symm_ll_unb_var1( A, B, C );
+      Symm_unb_var1( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -140,7 +141,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var1( L, B, nb_alg );
+      Symm_blk_var1( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -166,7 +167,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_unb_var2( L, B );
+      Symm_unb_var2( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -191,7 +192,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var2( L, B, nb_alg );
+      Symm_blk_var2( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -217,7 +218,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_unb_var3( L, B );
+      Symm_unb_var3( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -242,7 +243,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var3( L, B, nb_alg );
+      Symm_blk_var3( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -268,7 +269,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_unb_var4( L, B );
+      Symm_unb_var4( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -293,7 +294,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var4( L, B, nb_alg );
+      Symm_blk_var4( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -320,7 +321,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_unb_var5( L, B );
+      Symm_unb_var5( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -332,7 +333,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_unb_var5( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -345,7 +346,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var5( L, B, nb_alg );
+      Symm_blk_var5( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -357,7 +358,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_blk_var5( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -372,7 +373,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_unb_var6( L, B );
+      Symm_unb_var6( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -384,7 +385,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_unb_var6( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -397,7 +398,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var6( L, B, nb_alg );
+      Symm_blk_var6( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -409,7 +410,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_blk_var6( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -424,7 +425,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_unb_var7( L, B );
+      Symm_unb_var7( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -436,7 +437,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_unb_var7( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -449,7 +450,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var7( L, B, nb_alg );
+      Symm_blk_var7( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -461,7 +462,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_blk_var7( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -476,7 +477,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_unb_var8( L, B );
+      Symm_unb_var8( A, B, C );
 
       dtime = FLA_Clock() - dtime;
 
@@ -488,7 +489,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_unb_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_unb_var8( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -501,7 +502,7 @@ int main(int argc, char *argv[])
     
       dtime = FLA_Clock();
 
-      Symn_blk_var8( L, B, nb_alg );
+      Symm_blk_var8( A, B, C, nb_alg );
 
       dtime = FLA_Clock() - dtime;
 
@@ -513,7 +514,7 @@ int main(int argc, char *argv[])
 
     diff = FLA_Max_elemwise_diff( C, Cref );
 
-    printf( "data_blk_var4( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
+    printf( "data_blk_var8( %d, 1:3 ) = [ %d %le  %le];\n", i, n,
             gflops / dtime_best, diff );
     fflush( stdout );
 #endif
@@ -558,16 +559,16 @@ int main(int argc, char *argv[])
   printf( "plot( data_unb_var4( :,1 ), data_unb_var4( :, 2 ), 'm-.' ); \n" );
 #endif
 #if TEST_UNB_VAR5==TRUE
-  printf( "plot( data_unb_var5( :,1 ), data_unb_var5( :, 2 ), 'r-.' ); \n" );
+  printf( "plot( data_unb_var5( :,1 ), data_unb_var5( :, 2 ), 'c-.' ); \n" );
 #endif
 #if TEST_UNB_VAR6==TRUE
-  printf( "plot( data_unb_var6( :,1 ), data_unb_var6( :, 2 ), 'g-.' ); \n" );
+  printf( "plot( data_unb_var6( :,1 ), data_unb_var6( :, 2 ), 'y-.' ); \n" );
 #endif
 #if TEST_UNB_VAR7==TRUE
-  printf( "plot( data_unb_var7( :,1 ), data_unb_var7( :, 2 ), 'b-.' ); \n" );
+  printf( "plot( data_unb_var7( :,1 ), data_unb_var7( :, 2 ), 'k-.' ); \n" );
 #endif
 #if TEST_UNB_VAR8==TRUE
-  printf( "plot( data_unb_var8( :,1 ), data_unb_var8( :, 2 ), 'm-.' ); \n" );
+  printf( "plot( data_unb_var8( :,1 ), data_unb_var8( :, 2 ), 'm:' ); \n" );
 #endif
 #if TEST_BLK_VAR1==TRUE
   printf( "plot( data_blk_var1( :,1 ), data_blk_var1( :, 2 ), 'r--' ); \n" );
@@ -582,16 +583,16 @@ int main(int argc, char *argv[])
   printf( "plot( data_blk_var4( :,1 ), data_blk_var4( :, 2 ), 'm--' ); \n" );
 #endif
 #if TEST_BLK_VAR5==TRUE
-  printf( "plot( data_blk_var5( :,1 ), data_blk_var5( :, 2 ), 'r--' ); \n" );
+  printf( "plot( data_blk_var5( :,1 ), data_blk_var5( :, 2 ), 'c--' ); \n" );
 #endif
 #if TEST_BLK_VAR6==TRUE
-  printf( "plot( data_blk_var6( :,1 ), data_blk_var6( :, 2 ), 'g--' ); \n" );
+  printf( "plot( data_blk_var6( :,1 ), data_blk_var6( :, 2 ), 'y--' ); \n" );
 #endif
 #if TEST_BLK_VAR7==TRUE
-  printf( "plot( data_blk_var7( :,1 ), data_blk_var7( :, 2 ), 'b--' ); \n" );
+  printf( "plot( data_blk_var7( :,1 ), data_blk_var7( :, 2 ), 'k--' ); \n" );
 #endif
 #if TEST_BLK_VAR8==TRUE
-  printf( "plot( data_blk_var8( :,1 ), data_blk_var8( :, 2 ), 'm--' ); \n" );
+  printf( "plot( data_blk_var8( :,1 ), data_blk_var8( :, 2 ), 'm-' ); \n" );
 #endif
 
   printf( "hold on \n");

@@ -4,21 +4,21 @@
 
 #include "FLAME.h"
 
-#define TEST_UNB_VAR1 TRUE
+#define TEST_UNB_VAR1 FALSE
 #define TEST_BLK_VAR1 TRUE
-#define TEST_UNB_VAR2 TRUE
+#define TEST_UNB_VAR2 FALSE
 #define TEST_BLK_VAR2 TRUE
-#define TEST_UNB_VAR3 TRUE
+#define TEST_UNB_VAR3 FALSE
 #define TEST_BLK_VAR3 TRUE
-#define TEST_UNB_VAR4 TRUE
+#define TEST_UNB_VAR4 FALSE
 #define TEST_BLK_VAR4 TRUE
-#define TEST_UNB_VAR5 TRUE
+#define TEST_UNB_VAR5 FALSE
 #define TEST_BLK_VAR5 TRUE
-#define TEST_UNB_VAR6 TRUE
+#define TEST_UNB_VAR6 FALSE
 #define TEST_BLK_VAR6 TRUE
-#define TEST_UNB_VAR7 TRUE
+#define TEST_UNB_VAR7 FALSE
 #define TEST_BLK_VAR7 TRUE
-#define TEST_UNB_VAR8 TRUE
+#define TEST_UNB_VAR8 FALSE
 #define TEST_BLK_VAR8 TRUE
 
 
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     FLA_Obj_create( FLA_DOUBLE, n, n, 1, n, &Cold );
 
     /* Generate random matrices L and B */
-    FLA_Random_herm_matrix(FLA_LOWER_TRIANGULAR, A );
+    FLA_Random_matrix( A );
     FLA_Random_matrix( B );
     FLA_Random_matrix( Cold );
 

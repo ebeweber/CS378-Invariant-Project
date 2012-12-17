@@ -62,7 +62,8 @@ int Symm_blk_var8( FLA_Obj A, FLA_Obj B, FLA_Obj C, int nb_alg )
     
     // C1 = C1 + A10*B0 + A11*B1;
     FLA_Gemm(FLA_NO_TRANSPOSE, FLA_NO_TRANSPOSE, FLA_ONE, A10, B0, FLA_ONE, C1);
-    FLA_Gemm(FLA_NO_TRANSPOSE, FLA_NO_TRANSPOSE, FLA_ONE, A11, B1, FLA_ONE, C1);
+    // FLA_Gemm(FLA_NO_TRANSPOSE, FLA_NO_TRANSPOSE, FLA_ONE, A11, B1, FLA_ONE, C1);
+    FLA_Symm(FLA_LEFT, FLA_LOWER_TRIANGULAR, FLA_ONE, A11, B1, FLA_ONE, C1);
 
     /*------------------------------------------------------------*/
 
